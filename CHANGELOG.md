@@ -6,3 +6,7 @@
 - Customizable colors, border radius, margins, and animation curves.
 - WidgetStateProperty support for per-state icon and label customization.
 - Light and dark theme support.
+
+## 0.1.1
+
+- Updated README.md (I forgor \*crying emoji).
