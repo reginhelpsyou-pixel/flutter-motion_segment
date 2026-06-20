@@ -33,11 +33,7 @@ CheaplyCopied/
 build/
 coverage/
 
-#example
-example/build/
-example/.dart_tool/
-example/.flutter-plugins
-example/.flutter-plugins-dependencies# Miscellaneous
+# Miscellaneous
 *.class
 *.lock
 *.log
