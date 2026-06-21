@@ -10,3 +10,7 @@
 ## 0.1.1
 
 - Updated README.md (I forgor \*crying emoji).
+
+## 0.1.2
+
+- Fixed the problem with InkWell clipping

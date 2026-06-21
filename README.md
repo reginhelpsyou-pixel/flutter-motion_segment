@@ -19,7 +19,7 @@ Add `motion_segment` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  motion_segment: ^0.1.0
+  motion_segment: ^0.1.2
 ```
 
 Then run:
