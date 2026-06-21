@@ -53,7 +53,7 @@ class MotionSegment extends StatefulWidget {
   /// The border radius applied to the widget background and indicator.
   ///
   /// Defaults to `BorderRadius.circular(8)` when null.
-  final BorderRadiusGeometry? borderRadius;
+  final BorderRadius? borderRadius;
 
   /// The padding between the widget edge and the segments.
   ///
@@ -307,53 +307,48 @@ class _MotionSegmentState extends State<MotionSegment>
 
     final resolvedIcon = item.icon?.resolve(states);
     final resolvedLabel = item.label?.resolve(states);
-    return ClipRRect(
-      borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
-      child: Ink(
-        child: InkWell(
-          splashFactory: NoSplash.splashFactory,
-          hoverColor: item.hoverColor,
-          mouseCursor: item.mouseCursor ?? SystemMouseCursors.click,
-          onTap: () {
-            widget.onChanged?.call(index);
-            setState(() {
-              _fromIndex = _toIndex * _animationController.value +
-                  _fromIndex * (1 - _animationController.value);
-              _toIndex = index.toDouble();
+    return Ink(
+      child: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        hoverColor: item.hoverColor,
+        borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
+        mouseCursor: item.mouseCursor ?? SystemMouseCursors.click,
+        onTap: () {
+          widget.onChanged?.call(index);
+          setState(() {
+            _fromIndex = _toIndex * _animationController.value +
+                _fromIndex * (1 - _animationController.value);
+            _toIndex = index.toDouble();
 
-              _selectedIndex = index;
-            });
-            _updateAnimation();
-            _animationController.forward(from: 0.0);
-          },
-          child: ClipRRect(
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
-            child: _isHorizontal
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      if (resolvedIcon != null) resolvedIcon,
-                      if (resolvedIcon != null && resolvedLabel != null)
-                        const SizedBox(
-                          width: 4,
-                          height: double.maxFinite,
-                        ),
-                      if (resolvedLabel != null) resolvedLabel,
-                    ],
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      if (resolvedIcon != null) resolvedIcon,
-                      if (resolvedIcon != null && resolvedLabel != null)
-                        const SizedBox(width: double.maxFinite, height: 4),
-                      if (resolvedLabel != null) resolvedLabel,
-                    ],
-                  ),
-          ),
-        ),
+            _selectedIndex = index;
+          });
+          _updateAnimation();
+          _animationController.forward(from: 0.0);
+        },
+        child: _isHorizontal
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (resolvedIcon != null) resolvedIcon,
+                  if (resolvedIcon != null && resolvedLabel != null)
+                    const SizedBox(
+                      width: 4,
+                      height: double.maxFinite,
+                    ),
+                  if (resolvedLabel != null) resolvedLabel,
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (resolvedIcon != null) resolvedIcon,
+                  if (resolvedIcon != null && resolvedLabel != null)
+                    const SizedBox(width: double.maxFinite, height: 4),
+                  if (resolvedLabel != null) resolvedLabel,
+                ],
+              ),
       ),
     );
   }
