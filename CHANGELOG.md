@@ -14,3 +14,8 @@
 ## 0.1.2
 
 - Fixed the clipping when the widget is hovered
+
+## 0.1.3
+
+- Fixed the clipping when the widget is hovered
+- Added some easter eggs
