@@ -13,4 +13,4 @@
 
 ## 0.1.2
 
-- Fixed the problem with InkWell clipping
+- Fixed the clipping when the widget is hovered
